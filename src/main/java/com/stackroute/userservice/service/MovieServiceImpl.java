@@ -1,6 +1,8 @@
 package com.stackroute.userservice.service;
 
 import com.stackroute.userservice.domain.Movie;
+import com.stackroute.userservice.exceptions.MovieAlreadyExistsException;
+import com.stackroute.userservice.exceptions.MovieNotFoundException;
 import com.stackroute.userservice.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,8 +19,14 @@ public class MovieServiceImpl implements MovieService {
 
 
     @Override
-    public Movie saveMovie(Movie movie) {
+    public Movie saveMovie(Movie movie) throws MovieAlreadyExistsException {
+        if(movieRepository.existsById(movie.getMovieId())){
+            throw new MovieAlreadyExistsException("Movie id already exists");
+        }
         Movie savedMovie = movieRepository.save(movie);
+        if(savedMovie == null){
+            throw new MovieAlreadyExistsException("Movie id already exists");
+        }
         return savedMovie;
     }
 
@@ -28,7 +36,10 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Movie getMovieById(int movieId) {
+    public Movie getMovieById(int movieId) throws MovieNotFoundException {
+        if(!movieRepository.existsById(movieId)){
+            throw new MovieNotFoundException("Movie not found");
+        }
         Movie retrievedMovie = movieRepository.findById(movieId).get();
         return retrievedMovie;
 
