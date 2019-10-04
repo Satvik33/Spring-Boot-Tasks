@@ -76,5 +76,16 @@ public class MovieController {
         }
         return responseEntity;
     }
+
+    @GetMapping("movies/{movieName}")
+    public ResponseEntity trackByName(@PathVariable String movieName){
+        ResponseEntity responseEntity;
+        try{
+            responseEntity = new ResponseEntity<List<Movie>>(movieService.trackByName(movieName), HttpStatus.OK);
+        }catch (Exception e){
+            responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
+        }
+        return responseEntity;
+    }
     }
 
