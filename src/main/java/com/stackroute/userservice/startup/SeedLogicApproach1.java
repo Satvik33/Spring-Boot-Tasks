@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.core.env.Environment;
 
 @Component
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:field-values.properties")
 public class SeedLogicApproach1 implements ApplicationListener<ContextRefreshedEvent> {
     @Autowired
     private MovieRepository movieRepository;
