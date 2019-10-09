@@ -14,8 +14,8 @@ import java.util.List;
 @RequestMapping(value = "api/v1")
 public class MovieController {
 
-    
-    @Qualifier("primary")
+
+
     MovieService movieService;
 
 

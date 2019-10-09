@@ -4,11 +4,13 @@ package com.stackroute.userservice.service;
 import com.stackroute.userservice.domain.Movie;
 import com.stackroute.userservice.exceptions.MovieAlreadyExistsException;
 import com.stackroute.userservice.exceptions.MovieNotFoundException;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service("dummy")
+@Profile("test")
 public class TrackDummyServiceImpl implements MovieService {
 
 
