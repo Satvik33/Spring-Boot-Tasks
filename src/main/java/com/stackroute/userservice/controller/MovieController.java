@@ -3,6 +3,7 @@ package com.stackroute.userservice.controller;
 import com.stackroute.userservice.domain.Movie;
 import com.stackroute.userservice.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,8 @@ import java.util.List;
 @RequestMapping(value = "api/v1")
 public class MovieController {
 
-
+    
+    @Qualifier("primary")
     MovieService movieService;
 
 
