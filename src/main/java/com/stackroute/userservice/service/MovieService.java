@@ -10,7 +10,7 @@ public interface MovieService {
     public Movie saveMovie(Movie movie) throws MovieAlreadyExistsException;
     public List<Movie> getAllMovies();
     public Movie getMovieById(int movieId) throws MovieNotFoundException;
-    public void deleteMovieById(int movieId);
+    public void deleteMovieById(int movieId)throws MovieNotFoundException;
     public Movie updateContent(int movieId, String movieContent);
     public List<Movie> trackByName(String movieName);
 
