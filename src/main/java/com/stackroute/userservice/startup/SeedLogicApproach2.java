@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "movie")
 public class SeedLogicApproach2 implements CommandLineRunner {
 
+    @Autowired
     MovieRepository movieRepository;
     private int id2;
     private String name2;

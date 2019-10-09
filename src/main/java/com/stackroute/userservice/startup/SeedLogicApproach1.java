@@ -13,7 +13,7 @@ import org.springframework.core.env.Environment;
 @Component
 @PropertySource("classpath:application.properties")
 public class SeedLogicApproach1 implements ApplicationListener<ContextRefreshedEvent> {
-
+    @Autowired
     private MovieRepository movieRepository;
     private Movie movie;
 
