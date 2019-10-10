@@ -15,9 +15,23 @@ public class SeedLogicApproach2 implements CommandLineRunner {
 
     @Autowired
     MovieRepository movieRepository;
+
+    public void setId3(int id3) {
+        this.id3 = id3;
+    }
+
+    public void setName3(String name3) {
+        this.name3 = name3;
+    }
+
+    public void setContent3(String content3) {
+        this.content3 = content3;
+    }
+
     private int id2;
     private String name2;
-
+    private int id3;
+    private String name3;
     public void setId2(int id2) {
         this.id2 = id2;
     }
@@ -31,6 +45,7 @@ public class SeedLogicApproach2 implements CommandLineRunner {
     }
 
     private String content2;
+    private String content3;
 
 
     @Autowired
@@ -45,6 +60,12 @@ public class SeedLogicApproach2 implements CommandLineRunner {
         movie.setMovieName(name2);
         movie.setMovieContent(content2);
         movieRepository.save(movie);
+        Movie movie1 = new Movie();
+        movie1.setMovieId(id3);
+        movie1.setMovieName(name3);
+        movie1.setMovieContent(content3);
+        movieRepository.save(movie1);
+
     }
 
 

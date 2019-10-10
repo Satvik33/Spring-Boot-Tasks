@@ -14,7 +14,16 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @Builder
 public class Movie {
-    public void setMovieId(int movieId) {
+   /* public Movie(int movieId, String movieName, String movieContent) {
+        this.movieId = movieId;
+        this.movieName = movieName;
+        this.movieContent = movieContent;
+    }
+
+    public Movie() {
+    }*/
+
+    /*public void setMovieId(int movieId) {
         this.movieId = movieId;
     }
 
@@ -24,14 +33,14 @@ public class Movie {
 
     public void setMovieContent(String movieContent) {
         this.movieContent = movieContent;
-    }
+    }*/
 
     @Id
     int movieId;
     String movieName;
     String movieContent;
 
-    public int getMovieId() {
+    /*public int getMovieId() {
         return movieId;
     }
 
@@ -41,6 +50,6 @@ public class Movie {
 
     public String getMovieContent() {
         return movieContent;
-    }
+    }*/
 }
 

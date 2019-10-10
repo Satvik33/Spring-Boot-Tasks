@@ -50,11 +50,13 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public void deleteMovieById(int movieId) throws MovieNotFoundException {
+    public Movie deleteMovieById(int movieId) throws MovieNotFoundException {
         if(!movieRepository.existsById(movieId)){
             throw new MovieNotFoundException("Movie not found");
         }
+        Movie deletedMovie = movieRepository.findById(movieId).get();
         movieRepository.deleteById(movieId);
+        return deletedMovie;
     }
 
     @Override
@@ -65,8 +67,11 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> trackByName(String movieName) {
+    public List<Movie> trackByName(String movieName) throws MovieNotFoundException {
         List<Movie> trackedMovie = movieRepository.trackByName(movieName);
+        if(trackedMovie.toString().equals("[]")){
+            throw new MovieNotFoundException("No movie found with the given name");
+        }
         return trackedMovie;
     }
 

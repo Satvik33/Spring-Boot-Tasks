@@ -30,8 +30,8 @@ public class TrackDummyServiceImpl implements MovieService {
     }
 
     @Override
-    public void deleteMovieById(int movieId) throws MovieNotFoundException {
-
+    public Movie deleteMovieById(int movieId) throws MovieNotFoundException {
+        return null;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class TrackDummyServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> trackByName(String movieName) {
+    public List<Movie> trackByName(String movieName) throws MovieNotFoundException {
         return null;
     }
 }
