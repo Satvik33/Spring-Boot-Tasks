@@ -16,15 +16,22 @@ public class MovieController {
 
 
 
-    MovieService movieService;
+    private MovieService movieService;
+    private ResponseEntity responseEntity;
 
 
+    @Autowired
     public MovieController(MovieService movieService) {
         this.movieService = movieService;
     }
+
+    public MovieController(ResponseEntity responseEntity) {
+        this.responseEntity = responseEntity;
+    }
+
     @PostMapping("movie")
     public ResponseEntity<?> saveMovie(@RequestBody Movie movie){
-        ResponseEntity responseEntity;
+
         try{
             movieService.saveMovie(movie);
             responseEntity = new ResponseEntity<String>("Successfully Created", HttpStatus.CREATED);
@@ -33,9 +40,9 @@ public class MovieController {
         }
         return responseEntity;
     }
-    @GetMapping("movie")
+    @GetMapping("movies")
     public ResponseEntity getAllMovies() {
-        ResponseEntity responseEntity;
+
         try {
             List<Movie> movieList = movieService.getAllMovies();
             responseEntity = new ResponseEntity<List<Movie>>(movieList, HttpStatus.OK);
@@ -46,7 +53,7 @@ public class MovieController {
     }
     @GetMapping("movie/{movieId}")
     public ResponseEntity getMovieById(@PathVariable int movieId) {
-        ResponseEntity responseEntity;
+
         try {
             Movie retrievedMovie = movieService.getMovieById(movieId);
             responseEntity = new ResponseEntity<Movie>(retrievedMovie, HttpStatus.OK);
@@ -58,7 +65,7 @@ public class MovieController {
 
     @DeleteMapping("movie/{movieId}")
     public ResponseEntity deleteMovie(@PathVariable int movieId) {
-        ResponseEntity responseEntity;
+
         try {
             movieService.deleteMovieById(movieId);
             responseEntity = new ResponseEntity<String>("Successfully deleted", HttpStatus.OK);
@@ -70,7 +77,7 @@ public class MovieController {
 
     @PutMapping("movie/{movieId}")
     public ResponseEntity updateContent(@PathVariable int movieId, @RequestBody String movieContent) {
-        ResponseEntity responseEntity;
+
         try {
             responseEntity = new ResponseEntity<Movie>(movieService.updateContent(movieId, movieContent), HttpStatus.OK);
         } catch (Exception e) {
@@ -81,7 +88,7 @@ public class MovieController {
 
     @GetMapping("movies/{movieName}")
     public ResponseEntity trackByName(@PathVariable String movieName){
-        ResponseEntity responseEntity;
+
         try{
             responseEntity = new ResponseEntity<List<Movie>>(movieService.trackByName(movieName), HttpStatus.OK);
         }catch (Exception e){
