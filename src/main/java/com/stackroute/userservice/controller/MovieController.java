@@ -11,14 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/v1")
+//@RequestMapping(value = "api/v1")
 public class MovieController {
 
+    private MovieService movieService;
 
-
-    MovieService movieService;
-
-
+    @Autowired
     public MovieController(MovieService movieService) {
         this.movieService = movieService;
     }
@@ -83,7 +81,7 @@ public class MovieController {
     public ResponseEntity trackByName(@PathVariable String movieName){
         ResponseEntity responseEntity;
         try{
-            responseEntity = new ResponseEntity<List<Movie>>(movieService.trackByName(movieName), HttpStatus.OK);
+            responseEntity = new ResponseEntity<List<Movie>>(movieService.findMovieByMovieName(movieName), HttpStatus.OK);
         }catch (Exception e){
             responseEntity = new ResponseEntity<String>(e.getMessage(), HttpStatus.CONFLICT);
         }

@@ -12,7 +12,7 @@ public interface MovieService {
     public Movie getMovieById(int movieId) throws MovieNotFoundException;
     public Movie deleteMovieById(int movieId)throws MovieNotFoundException;
     public Movie updateContent(int movieId, String movieContent);
-    public List<Movie> trackByName(String movieName) throws MovieNotFoundException;
+    public List<Movie> findMovieByMovieName(String movieName) throws MovieNotFoundException;
 
 
 

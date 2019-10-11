@@ -40,7 +40,7 @@ public class TrackDummyServiceImpl implements MovieService {
     }
 
     @Override
-    public List<Movie> trackByName(String movieName) throws MovieNotFoundException {
+    public List<Movie> findMovieByMovieName(String movieName) throws MovieNotFoundException {
         return null;
     }
 }

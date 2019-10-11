@@ -10,8 +10,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Service("primary")
-@Profile("dev")
+@Service()
 @Primary
 public class MovieServiceImpl implements MovieService {
     MovieRepository movieRepository;
@@ -61,17 +60,14 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public Movie updateContent(int movieId, String movieContent) {
-        Movie newMovie = movieRepository.getOne(movieId);
+        Movie newMovie = movieRepository.findById(movieId).get();
         newMovie.setMovieContent(movieContent);
         return movieRepository.save(newMovie);
     }
 
     @Override
-    public List<Movie> trackByName(String movieName) throws MovieNotFoundException {
-        List<Movie> trackedMovie = movieRepository.trackByName(movieName);
-        if(trackedMovie.toString().equals("[]")){
-            throw new MovieNotFoundException("No movie found with the given name");
-        }
+    public List<Movie> findMovieByMovieName(String movieName) {
+        List<Movie> trackedMovie = movieRepository.findMovieByMovieName(movieName);
         return trackedMovie;
     }
 

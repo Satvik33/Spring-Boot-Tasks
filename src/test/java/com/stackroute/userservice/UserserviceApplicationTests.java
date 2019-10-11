@@ -1,4 +1,4 @@
-package com.stackroute.userservice;
+/*package com.stackroute.userservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,4 +13,4 @@ public class UserserviceApplicationTests {
 	public void contextLoads() {
 	}
 
-}
+}*/
